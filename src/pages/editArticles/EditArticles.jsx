@@ -229,7 +229,7 @@ const EditArticles = (data) => {
             <br />
             <Typography>{er}</Typography>
             <br />
-            <Link to="/articles">На главную</Link>
+            <Link to="/">На главную</Link>
           </Grid>
           <Grid item md={5} className="articleBody">
             <ArticleBody

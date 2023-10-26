@@ -2,6 +2,7 @@ import React from "react";
 import "./articleBody.scss";
 import { Typography } from "@material-ui/core";
 
+//предпросмотр статьи при ее редактировании в реальном времени (правая часть страницы редактирования)
 const ArticleBody = ({
   image,
   title,

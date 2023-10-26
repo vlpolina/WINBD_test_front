@@ -12,7 +12,9 @@ import {
   ButtonGroup,
 } from "@material-ui/core";
 
+//страница редактирования статьи
 const EditArticles = (data) => {
+  //состояния для хранения и отображения данных при редактировании
   const [title, setTitle] = useState("Название статьи");
   const [quote, setQuote] = useState("Текст цитаты");
   const [author, setAuthor] = useState("Автор цитаты");
@@ -23,10 +25,12 @@ const EditArticles = (data) => {
   const [er, setError] = useState();
   const [article, setArticle] = useState([]);
 
+  //получение ID открытой статьи из url- адреса для получения других ее данных
   const location = useLocation();
   const searchID = new URLSearchParams(location.search);
   const articleID = searchID.get("id");
 
+  //получение данных статьи
   const getData = async () => {
     const docRef = doc(db, "articles", articleID);
     const docSnap = await getDoc(docRef);
@@ -51,6 +55,7 @@ const EditArticles = (data) => {
     setFile(article.selectedFile || null);
   }, [article]);
 
+  //функция для загрузки изображений
   const handleImageUpload = (event) => {
     const files = event.target.files;
     const uploadedFiles = [];
@@ -67,6 +72,7 @@ const EditArticles = (data) => {
     }
   };
 
+  //функция для форматирования выделенного курсором текста в textarea
   const changeText = (param) => {
     const textarea = document.getElementById("textarea");
     const start = textarea.value.substring(0, textarea.selectionStart);
@@ -93,6 +99,7 @@ const EditArticles = (data) => {
     setContent(updatedContent);
   };
 
+  //функция для загрузки иных файлов
   const handleFileUpload = (event) => {
     const files = event.target.files;
     const uploadedFiles = [];
@@ -109,6 +116,7 @@ const EditArticles = (data) => {
     }
   };
 
+  //функция для отправки отредактированных данных на сервер
   const sendData = async () => {
     const articleRef = doc(db, "articles", articleID);
     setIsSending(true);

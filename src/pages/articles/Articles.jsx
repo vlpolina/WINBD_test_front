@@ -5,8 +5,11 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import { Grid } from "@material-ui/core";
 
+//страница с отображением всех статей
 const Articles = () => {
   const [articles, setArticles] = useState([]);
+
+  //получение данных всех статей с сервера
   const getData = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, "articles"));

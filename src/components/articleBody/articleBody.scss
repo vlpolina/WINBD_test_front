@@ -1,0 +1,29 @@
+.image {
+  margin: 2px;
+  width: 40%;
+}
+
+.quote {
+  margin: 0;
+  &__body {
+    padding: 15px;
+    background: #eee;
+    border-radius: 5px;
+  }
+  &__body::before {
+    content: "\201C";
+  }
+
+  &__body::after {
+    content: "\201D";
+  }
+
+  &__footer {
+    padding: 10px;
+    background: #afafaf;
+    border-radius: 5px;
+  }
+  &__footer::before {
+    content: "\002D";
+  }
+}
